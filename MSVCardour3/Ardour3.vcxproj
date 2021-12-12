@@ -1,0 +1,812 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug 32|Win32">
+      <Configuration>Debug 32</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release 32 with Debugging Capability|Win32">
+      <Configuration>Release 32 with Debugging Capability</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release 32|Win32">
+      <Configuration>Release 32</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>17.0</VCProjectVersion>
+    <ProjectName>Mixbus6</ProjectName>
+    <ProjectGuid>{94B9EA5B-1D83-4573-9F02-29A2E33E6D1F}</ProjectGuid>
+    <RootNamespace>Ardour6</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release 32 with Debugging Capability|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v143</PlatformToolset>
+    <WholeProgramOptimization>false</WholeProgramOptimization>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release 32|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v143</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug 32|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v143</PlatformToolset>
+    <UseOfMfc>false</UseOfMfc>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release 32 with Debugging Capability|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release 32|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug 32|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>17.0.31919.74</_ProjectFileVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug 32|Win32'">
+    <OutDir>$(SolutionDir)$(Configuration)\</OutDir>
+    <IntDir>$(Configuration)\</IntDir>
+    <LinkIncremental>true</LinkIncremental>
+    <GenerateManifest>true</GenerateManifest>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release 32|Win32'">
+    <OutDir>$(SolutionDir)$(Configuration)\</OutDir>
+    <IntDir>$(Configuration)\</IntDir>
+    <LinkIncremental>false</LinkIncremental>
+    <GenerateManifest>true</GenerateManifest>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release 32 with Debugging Capability|Win32'">
+    <OutDir>$(SolutionDir)$(Configuration)\</OutDir>
+    <IntDir>$(Configuration)\</IntDir>
+    <LinkIncremental>false</LinkIncremental>
+    <GenerateManifest>true</GenerateManifest>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug 32|Win32'">
+    <PreBuildEvent>
+      <Message>Prepare configuration file(s)</Message>
+      <Command>cd ..
+del gtk2_ardour\ardour.keys
+perl msvc32-fixup.pl
+perl tools/fmt-bindings --platform="windows" --winkey="Win" --accelmap 1  gtk2_ardour/ardour.keys.in &gt; gtk2_ardour/ardour.keys
+</Command>
+    </PreBuildEvent>
+    <ClCompile>
+      <AdditionalOptions>/FI$(TargetSxsFolder)\targetsxs.h %(AdditionalOptions)</AdditionalOptions>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>F:\+GTK-SOURCES\jackdmp\src\common\jack;F:\+GTK-SOURCES\jackdmp\src\windows;..\libs;..\libs\pbd\msvc;..\libs\surfaces\control_protocol;..\libs\ardour;..\libs\canvas;..\libs\gtkmm2ext;..\libs\pbd;..\libs\midi++2;..\libs\evoral;..\libs\libltc;..\libs\ptformat;..\libs\temporal;..\libs\vamp-sdk;..\libs\audiographer;..\libs\rubberband;..\libs\waveview;..\libs\widgets;..\libs\zita-resampler;..\libs\fst;$(GenericIncludeFolder)\ardourext;$(GenericIncludeFolder)\freetype2;$(GenericIncludeFolder)\gtk-2.0;$(GenericIncludeFolder)\gtk-2.0\gdk;$(GenericIncludeFolder)\atk-2.0;$(GenericIncludeFolder)\cairo;$(GenericIncludeFolder)\pango-1.0;$(GenericIncludeFolder)\libart-2.0;$(GenericIncludeFolder)\libsndfile;$(GenericIncludeFolder)\lrdf;$(GenericIncludeFolder)\raptor;$(GenericLibraryFolder)\glib-2.0\include;$(GenericIncludeFolder)\lilv-0;$(GenericIncludeFolder)\suil-0;..\libs\lua;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>VERSIONSTRING="6.0.1";PLATFORM_WINDOWS;COMPILER_MSVC;PTHREAD_WIN32;UINTSDEFINED=1;_CRT_SECURE_NO_WARNINGS;CANVAS_COMPATIBILITY;LIBCANVAS_STATIC;LIBWAVEVIEW_STATIC;CANVAS_DEBUG;WAVEVIEW_DEBUG;RUBBERBAND_IS_IN_WIN_STATIC_LIB;LUA_BUILD_AS_DLL;USE_CAIRO_IMAGE_SURFACE;NOMINMAX;NO_POSIX_MEMALIGN;INCLUDE_ARDOUR_MISCELLANEOUS=1;BOOST_REGEX_DYN_LINK;BOOST_REGEX_NO_LIB;BOOST_CHRONO_NO_LIB;BOOST_SYSTEM_NO_LIB;BOOST_THREAD_NO_LIB;BOOST_DATE_TIME_NO_LIB;BOOST_ATOMIC_NO_LIB;GNU_WIN32;HAVE_CONFIG_H;WIN32;_WIN32;_WINDOWS;_MBCS;_DEBUG;DEBUG=Debug;ARCH_X86;USE_XMMINTRIN;BUILD_SSE_OPTIMIZATIONS;ENABLE_NLS=1;CLEARLOOKS_CONF_LOCATION="\\etc\\engines\\libclearlooks.la";FONTS_CONF_LOCATION="\\etc\\fontconfig\\fonts.conf";PANGO_CONF_LOCATION="\\etc\\pango\\pango.modules";PIXBUFLOADERS_CONF_LOCATION="\\etc\\gtk-2.0\\gdk-pixbuf.loaders";PROGRAM_VERSION="6";PACKAGE="gtk2_ardour";_REENTRANT;_USE_MATH_DEFINES;_LARGEFILE_SOURCE;_LARGEFILE64_SOURCE;LIBC_DISABLE_DEPRECATED;BOOST_SYSTEM_NO_DEPRECATED;__STDC_LIMIT_MACROS;__STDC_FORMAT_MACROS;INTERNAL_SHARED_LIBS=1;JACK_SESSION=1;HAVE_GLIB=1;HAVE_GTHREAD=1;HAVE_SNDFILE=1;HAVE_GIOMM=1;HAVE_CURL=1;HAVE_LO=1;HAVE_MODE_T=1;PHONE_HOME=1;FREESOUND=1;LV2_EXTENDED=1;WINDOWS_KEY="Mod4&gt;&lt;Super";IS_OSX=0;HAVE_XML=1;HAVE_UUID=1;HAVE_LIBS_PBD=1;HAVE_JACK=1;HAVE_LIBS_MIDIPP2=1;HAVE_LIBS_EVORAL=1;HAVE_FFTW3=1;HAVE_FFTW3F=1;HAVE_AUBIO=1;HAVE_LIBS_VAMP_SDK=1;HAVE_LIBS_VAMP_PLUGINS=1;HAVE_LIBS_TAGLIB=1;HAVE_LIBS_LIBLTC=1;HAVE_LIBS_RUBBERBAND=1;HAVE_CONTROL_PROTOCOL=1;HAVE_FRONTIER=1;HAVE_GENERIC_MIDI=1;HAVE_MACKIE=1;HAVE_OSC=1;HAVE_TRANZPORT=1;HAVE_WIIMOTE=1;HAVE_LIBS_SURFACES=1;HAVE_2IN2OUT=1;HAVE_1IN2OUT=1;HAVE_VBAP=1;HAVE_LIBS_PANNERS=1;HAVE_LIBS_TEMPORAL=1;HAVE_LRDF=1;HAVE_SAMPLERATE=1;HAVE_SERD=1;HAVE_SORD=1;HAVE_SRATOM=1;HAVE_LILV=1;HAVE_LILV_0_16_0=1;HAVE_OGG=1;HAVE_FLAC=1;HAVE_RUBBERBAND=1;USE_RUBBERBAND=1;HAVE_JACK_SESSION=1;HAVE_UNISTD=1;HAVE_JACK_ON_INFO_SHUTDOWN=1;HAVE_JACK_VIDEO_SUPPORT=1;HAVE_BOOST_SCOPED_PTR_HPP=1;HAVE_BOOST_PTR_CONTAINER_PTR_LIST_HPP=1;HAVE_LIBS_ARDOUR=1;HAVE_GTKMM=1;HAVE_GTK=1;HAVE_LIBS_GTKMM2EXT=1;HAVE_LIBS_CLEARLOOKS_NEWER=1;HAVE_BOOST_FORMAT_HPP=1;HAVE_LIBS_AUDIOGRAPHER=1;HAVE_GNOMECANVAS=0;HAVE_GNOMECANVASMM=0;HAVE_X11=0;HAVE_FONTCONFIG=1;HAVE_BOOST_SHARED_PTR_HPP=1;HAVE_BOOST_WEAK_PTR_HPP=1;HAVE_GTK2_ARDOUR=1;HAVE_EXPORT=1;HAVE_MIDI_MAPS=1;HAVE_MCP=1;HAVE_PATCHFILES=1;HAVE_TOOLS_SANITY_CHECK=1;SMF_VERSION="1.2";LOCALEDIR="";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>true</MinimalRebuild>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <StructMemberAlignment>Default</StructMemberAlignment>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <CallingConvention>Cdecl</CallingConvention>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>libfftw3-3.lib;libfftw3f-3.lib;libfftw3l-3.lib;libeay32.lib;iconvD.lib;zlib1D.lib;boost-regex32D.lib;$(DllPrefix)atkmm32$(AtkmmDllSuffix)D.lib;$(DllPrefix)gtkmm32$(GtkmmDllSuffix)D.lib;$(DllPrefix)gdkmm32$(GtkmmDllSuffix)D.lib;$(DllPrefix)glibmm32$(GlibmmDllSuffix)D.lib;$(DllPrefix)giomm32$(GlibmmDllSuffix)D.lib;$(DllPrefix)cairomm32$(CairommDllSuffix)D.lib;$(DllPrefix)pangomm32$(PangommDllSuffix)D.lib;pthreadVCE2.lib;$(DllPrefix)pango32$(PangoDllSuffix)D.lib;$(DllPrefix)pangoft232$(PangoDllSuffix)D.lib;$(DllPrefix)pangowin32$(PangoDllSuffix)D.lib;$(DllPrefix)pangocairo32$(PangoDllSuffix)D.lib;$(DllPrefix)cairo32$(CairoDllSuffix)D.lib;$(DllPrefix)atk32$(AtkDllSuffix)D.lib;$(DllPrefix)gthread32$(GlibDllSuffix)D.lib;$(DllPrefix)gobject32$(GlibDllSuffix)D.lib;$(DllPrefix)gmodule32$(GlibDllSuffix)D.lib;$(DllPrefix)glib32$(GlibDllSuffix)D.lib;$(DllPrefix)gio32$(GlibDllSuffix)D.lib;$(DllPrefix)gtk32$(GtkDllSuffix)D.lib;$(DllPrefix)gdk32$(GtkDllSuffix)D.lib;$(DllPrefix)gdk-pixbuf32$(GdkPixbufDllSuffix)D.lib;$(DllPrefix)sigc++32-2.0D.lib;$(DllPrefix)curlD.lib;$(DllPrefix)fontconfigD.lib;freetype32-2D.lib;raptor2D.lib;lrdfD.lib;libloD.lib;$(DllPrefix)ardour32D.lib;$(DllPrefix)ardour_cp32D.lib;$(DllPrefix)audiographer32D.lib;$(DllPrefix)lua32D.lib;$(DllPrefix)pbd32D.lib;$(DllPrefix)midi++32D.lib;$(DllPrefix)evoral32D.lib;$(DllPrefix)ptformat32-0D.lib;$(DllPrefix)gtkmm2ext32D.lib;$(DllPrefix)ltcD.lib;$(DllPrefix)temporal32D.lib;$(DllPrefix)widgets32D.lib;waveviewD.lib;cairocanvasD.lib;rubberbandD.lib;$(DllPrefix)sndfile-1D.lib;$(DllPrefix)samplerate-0D.lib;vampsdkD.lib;vamphostsdkD.lib;panner_1in2out32D.lib;panner_2in2out32D.lib;panner_vbap32D.lib;$(DllPrefix)lilv32-0D.lib;$(DllPrefix)suil32-0D.lib;$(DllPrefix)serd32-0D.lib;$(DllPrefix)sord32-0D.lib;$(DllPrefix)sratom32-0D.lib;libart_lgpl_2D.lib;libjackD.lib;libxml2D.lib;intlD.lib;shell32.lib;psapi.lib;iphlpapi.lib;ws2_32.lib;winmm.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>$(Debug32TestSuiteFolder)\$(ProjectName)D.exe</OutputFile>
+      <AdditionalLibraryDirectories>F:\pthread-win32\Pre-built.2\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <IgnoreSpecificDefaultLibraries>libboost_regex-vc80-mt-gd-1_40.lib;msvcrt.lib;dsound.lib;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Console</SubSystem>
+      <EntryPointSymbol />
+    </Link>
+    <PostBuildEvent>
+      <Command>cd ..\gtk2_ardour
+copy /Y "resources\*.png" "$(Release32TestSuiteFolder)\..\share\$(LibardourFolder)\resources"
+copy /Y "icons\*.png" "$(Debug32TestSuiteFolder)\..\share\$(LibardourFolder)\icons"
+copy /Y "icons\cursor_square\*.png" "$(Debug32TestSuiteFolder)\..\share\$(LibardourFolder)\icons"
+copy /Y "icons\cursor_square\hotspots" "$(Debug32TestSuiteFolder)\..\share\$(LibardourFolder)\icons"
+copy /Y "ardour.keys" "$(Debug32TestSuiteFolder)\..\share\$(LibardourFolder)"
+copy /Y "default_ui_config" "$(Debug32TestSuiteFolder)\..\share\$(LibardourFolder)"
+</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release 32|Win32'">
+    <PreBuildEvent>
+      <Message>Prepare configuration file(s)</Message>
+      <Command>cd ..
+del gtk2_ardour\ardour.keys
+perl msvc32-fixup.pl
+perl tools/fmt-bindings --platform="windows" --winkey="Win" --accelmap 1  gtk2_ardour/ardour.keys.in &gt; gtk2_ardour/ardour.keys
+</Command>
+    </PreBuildEvent>
+    <ClCompile>
+      <AdditionalOptions>/FI$(TargetSxsFolder)\targetsxs.h %(AdditionalOptions)</AdditionalOptions>
+      <Optimization>MaxSpeed</Optimization>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <AdditionalIncludeDirectories>F:\+GTK-SOURCES\jackdmp\src\common\jack;F:\+GTK-SOURCES\jackdmp\src\windows;..\libs;..\libs\pbd\msvc;..\libs\surfaces\control_protocol;..\libs\ardour;..\libs\canvas;..\libs\gtkmm2ext;..\libs\pbd;..\libs\midi++2;..\libs\evoral;..\libs\libltc;..\libs\ptformat;..\libs\temporal;..\libs\vamp-sdk;..\libs\audiographer;..\libs\rubberband;..\libs\waveview;..\libs\widgets;..\libs\zita-resampler;..\libs\fst;$(GenericIncludeFolder)\ardourext;$(GenericIncludeFolder)\freetype2;$(GenericIncludeFolder)\gtk-2.0;$(GenericIncludeFolder)\gtk-2.0\gdk;$(GenericIncludeFolder)\atk-2.0;$(GenericIncludeFolder)\cairo;$(GenericIncludeFolder)\pango-1.0;$(GenericIncludeFolder)\libart-2.0;$(GenericIncludeFolder)\libsndfile;$(GenericIncludeFolder)\lrdf;$(GenericIncludeFolder)\raptor;$(GenericLibraryFolder)\glib-2.0\include;$(GenericIncludeFolder)\lilv-0;$(GenericIncludeFolder)\suil-0;..\libs\lua;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>VERSIONSTRING="6.0.1";PLATFORM_WINDOWS;COMPILER_MSVC;PTHREAD_WIN32;UINTSDEFINED=1;_SECURE_SCL=0;_CRT_SECURE_NO_WARNINGS;CANVAS_COMPATIBILITY;LIBCANVAS_STATIC;LIBWAVEVIEW_STATIC;RUBBERBAND_IS_IN_WIN_STATIC_LIB;LUA_BUILD_AS_DLL;USE_CAIRO_IMAGE_SURFACE;NOMINMAX;NO_POSIX_MEMALIGN;INCLUDE_ARDOUR_MISCELLANEOUS=1;BOOST_REGEX_DYN_LINK;BOOST_REGEX_NO_LIB;BOOST_CHRONO_NO_LIB;BOOST_SYSTEM_NO_LIB;BOOST_THREAD_NO_LIB;BOOST_DATE_TIME_NO_LIB;BOOST_ATOMIC_NO_LIB;GNU_WIN32;HAVE_CONFIG_H;WIN32;_WIN32;_WINDOWS;_MBCS;NDEBUG;ARCH_X86;USE_XMMINTRIN;BUILD_SSE_OPTIMIZATIONS;ENABLE_NLS=1;PROGRAM_VERSION="6";PACKAGE="gtk2_ardour";_REENTRANT;_USE_MATH_DEFINES;_LARGEFILE_SOURCE;_LARGEFILE64_SOURCE;LIBC_DISABLE_DEPRECATED;BOOST_SYSTEM_NO_DEPRECATED;__STDC_LIMIT_MACROS;__STDC_FORMAT_MACROS;INTERNAL_SHARED_LIBS=1;JACK_SESSION=1;HAVE_GLIB=1;HAVE_GTHREAD=1;HAVE_SNDFILE=1;HAVE_GIOMM=1;HAVE_CURL=1;HAVE_LO=1;HAVE_MODE_T=1;PHONE_HOME=1;FREESOUND=1;LV2_EXTENDED=1;WINDOWS_KEY="Mod4&gt;&lt;Super";IS_OSX=0;HAVE_XML=1;HAVE_UUID=1;HAVE_LIBS_PBD=1;HAVE_JACK=1;HAVE_LIBS_MIDIPP2=1;HAVE_LIBS_EVORAL=1;HAVE_FFTW3=1;HAVE_FFTW3F=1;HAVE_AUBIO=1;HAVE_LIBS_VAMP_SDK=1;HAVE_LIBS_VAMP_PLUGINS=1;HAVE_LIBS_TAGLIB=1;HAVE_LIBS_LIBLTC=1;HAVE_LIBS_RUBBERBAND=1;HAVE_CONTROL_PROTOCOL=1;HAVE_FRONTIER=1;HAVE_GENERIC_MIDI=1;HAVE_MACKIE=1;HAVE_OSC=1;HAVE_TRANZPORT=1;HAVE_WIIMOTE=1;HAVE_LIBS_SURFACES=1;HAVE_2IN2OUT=1;HAVE_1IN2OUT=1;HAVE_VBAP=1;HAVE_LIBS_PANNERS=1;HAVE_LIBS_TEMPORAL=1;HAVE_LRDF=1;HAVE_SAMPLERATE=1;HAVE_SERD=1;HAVE_SORD=1;HAVE_SRATOM=1;HAVE_LILV=1;HAVE_LILV_0_16_0=1;HAVE_OGG=1;HAVE_FLAC=1;HAVE_RUBBERBAND=1;USE_RUBBERBAND=1;HAVE_JACK_SESSION=1;HAVE_UNISTD=1;HAVE_JACK_ON_INFO_SHUTDOWN=1;HAVE_JACK_VIDEO_SUPPORT=1;HAVE_BOOST_SCOPED_PTR_HPP=1;HAVE_BOOST_PTR_CONTAINER_PTR_LIST_HPP=1;HAVE_LIBS_ARDOUR=1;HAVE_GTKMM=1;HAVE_GTK=1;HAVE_LIBS_GTKMM2EXT=1;HAVE_LIBS_CLEARLOOKS_NEWER=1;HAVE_BOOST_FORMAT_HPP=1;HAVE_LIBS_AUDIOGRAPHER=1;HAVE_GNOMECANVAS=0;HAVE_GNOMECANVASMM=0;HAVE_X11=0;HAVE_FONTCONFIG=1;HAVE_BOOST_SHARED_PTR_HPP=1;HAVE_BOOST_WEAK_PTR_HPP=1;HAVE_GTK2_ARDOUR=1;HAVE_EXPORT=1;HAVE_MIDI_MAPS=1;HAVE_MCP=1;HAVE_PATCHFILES=1;HAVE_TOOLS_SANITY_CHECK=1;SMF_VERSION="1.2";LOCALEDIR="";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <StringPooling>false</StringPooling>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <EnableEnhancedInstructionSet>StreamingSIMDExtensions</EnableEnhancedInstructionSet>
+      <WarningLevel>Level3</WarningLevel>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>libfftw3-3.lib;libfftw3f-3.lib;libfftw3l-3.lib;libeay32.lib;iconv.lib;zlib1.lib;boost-regex32.lib;$(DllPrefix)atkmm32$(AtkmmDllSuffix).lib;$(DllPrefix)gtkmm32$(GtkmmDllSuffix).lib;$(DllPrefix)gdkmm32$(GtkmmDllSuffix).lib;$(DllPrefix)glibmm32$(GlibmmDllSuffix).lib;$(DllPrefix)giomm32$(GlibmmDllSuffix).lib;$(DllPrefix)cairomm32$(CairommDllSuffix).lib;$(DllPrefix)pangomm32$(PangommDllSuffix).lib;pthreadVCE2.lib;$(DllPrefix)pango32$(PangoDllSuffix).lib;$(DllPrefix)pangoft232$(PangoDllSuffix).lib;$(DllPrefix)pangowin32$(PangoDllSuffix).lib;$(DllPrefix)pangocairo32$(PangoDllSuffix).lib;$(DllPrefix)cairo32$(CairoDllSuffix).lib;$(DllPrefix)atk32$(AtkDllSuffix).lib;$(DllPrefix)gthread32$(GlibDllSuffix).lib;$(DllPrefix)gobject32$(GlibDllSuffix).lib;$(DllPrefix)gmodule32$(GlibDllSuffix).lib;$(DllPrefix)glib32$(GlibDllSuffix).lib;$(DllPrefix)gio32$(GlibDllSuffix).lib;$(DllPrefix)gtk32$(GtkDllSuffix).lib;$(DllPrefix)gdk32$(GtkDllSuffix).lib;$(DllPrefix)gdk-pixbuf32$(GdkPixbufDllSuffix).lib;$(DllPrefix)sigc++32-2.0.lib;$(DllPrefix)curl.lib;$(DllPrefix)fontconfig.lib;freetype32-2.lib;raptor2.lib;lrdf.lib;liblo.lib;$(DllPrefix)ardour32.lib;$(DllPrefix)ardour_cp32.lib;$(DllPrefix)audiographer32.lib;$(DllPrefix)lua32.lib;$(DllPrefix)pbd32.lib;$(DllPrefix)midi++32.lib;$(DllPrefix)evoral32.lib;$(DllPrefix)ptformat32-0.lib;$(DllPrefix)gtkmm2ext32.lib;$(DllPrefix)ltc.lib;$(DllPrefix)temporal32.lib;$(DllPrefix)widgets32.lib;waveview.lib;cairocanvas.lib;rubberband.lib;$(DllPrefix)sndfile-1.lib;$(DllPrefix)samplerate-0.lib;vampsdk.lib;vamphostsdk.lib;panner_1in2out32.lib;panner_2in2out32.lib;panner_vbap32.lib;$(DllPrefix)lilv32-0.lib;$(DllPrefix)suil32-0.lib;$(DllPrefix)serd32-0.lib;$(DllPrefix)sord32-0.lib;$(DllPrefix)sratom32-0.lib;libart_lgpl_2.lib;libjack.lib;libxml2.lib;intl.lib;shell32.lib;psapi.lib;iphlpapi.lib;ws2_32.lib;winmm.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>$(Release32TestSuiteFolder)\$(ProjectName).exe</OutputFile>
+      <AdditionalLibraryDirectories>F:\pthread-win32\Pre-built.2\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <IgnoreSpecificDefaultLibraries>libboost_regex-vc80-mt-1_40.lib;dsound.lib;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <SubSystem>Windows</SubSystem>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+    <PostBuildEvent>
+      <Command>copy /Y "$(Release32TestSuiteFolder)\$(ProjectName).exe" "$(Release32TargetFolder)\$(ProjectName).exe"
+cd ..\gtk2_ardour
+copy /Y "resources\*.png" "$(Release32TestSuiteFolder)\..\share\$(LibardourFolder)\resources"
+copy /Y "icons\*.png" "$(Release32TestSuiteFolder)\..\share\$(LibardourFolder)\icons"
+copy /Y "icons\cursor_square\*.png" "$(Release32TestSuiteFolder)\..\share\$(LibardourFolder)\icons"
+copy /Y "icons\cursor_square\hotspots" "$(Release32TestSuiteFolder)\..\share\$(LibardourFolder)\icons"
+copy /Y "ardour.keys" "$(Release32TestSuiteFolder)\..\share\$(LibardourFolder)"
+copy /Y "default_ui_config" "$(PackagerFolderLocal)\..\share\$(LibardourFolder)"
+copy /Y "default_ui_config" "$(Release32TestSuiteFolder)\..\share\$(LibardourFolder)"
+</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release 32 with Debugging Capability|Win32'">
+    <PreBuildEvent>
+      <Message>Prepare configuration file(s)</Message>
+      <Command>cd ..
+del gtk2_ardour\ardour.keys
+perl msvc32-fixup.pl
+perl tools/fmt-bindings --platform="windows" --winkey="Win" --accelmap 1  gtk2_ardour/ardour.keys.in &gt; gtk2_ardour/ardour.keys
+</Command>
+    </PreBuildEvent>
+    <ClCompile>
+      <AdditionalOptions>/FI$(TargetSxsFolder)\targetsxs.h %(AdditionalOptions)</AdditionalOptions>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>F:\+GTK-SOURCES\jackdmp\src\common\jack;F:\+GTK-SOURCES\jackdmp\src\windows;..\libs;..\libs\pbd\msvc;..\libs\surfaces\control_protocol;..\libs\ardour;..\libs\canvas;..\libs\gtkmm2ext;..\libs\pbd;..\libs\midi++2;..\libs\evoral;..\libs\libltc;..\libs\ptformat;..\libs\temporal;..\libs\vamp-sdk;..\libs\audiographer;..\libs\rubberband;..\libs\waveview;..\libs\widgets;..\libs\zita-resampler;..\libs\fst;$(GenericIncludeFolder)\ardourext;$(GenericIncludeFolder)\freetype2;$(GenericIncludeFolder)\gtk-2.0;$(GenericIncludeFolder)\gtk-2.0\gdk;$(GenericIncludeFolder)\atk-2.0;$(GenericIncludeFolder)\cairo;$(GenericIncludeFolder)\pango-1.0;$(GenericIncludeFolder)\libart-2.0;$(GenericIncludeFolder)\libsndfile;$(GenericIncludeFolder)\lrdf;$(GenericIncludeFolder)\raptor;$(GenericLibraryFolder)\glib-2.0\include;$(GenericIncludeFolder)\lilv-0;$(GenericIncludeFolder)\suil-0;..\libs\lua;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>VERSIONSTRING="6.0.1";PLATFORM_WINDOWS;COMPILER_MSVC;PTHREAD_WIN32;UINTSDEFINED=1;_SECURE_SCL=0;_CRT_SECURE_NO_WARNINGS;CANVAS_COMPATIBILITY;CANVAS_DEBUG;WAVEVIEW_DEBUG;LIBCANVAS_STATIC;LIBWAVEVIEW_STATIC;RUBBERBAND_IS_IN_WIN_STATIC_LIB;LUA_BUILD_AS_DLL;USE_CAIRO_IMAGE_SURFACE;NOMINMAX;NO_POSIX_MEMALIGN;INCLUDE_ARDOUR_MISCELLANEOUS=1;BOOST_REGEX_DYN_LINK;BOOST_REGEX_NO_LIB;BOOST_CHRONO_NO_LIB;BOOST_SYSTEM_NO_LIB;BOOST_THREAD_NO_LIB;BOOST_DATE_TIME_NO_LIB;BOOST_ATOMIC_NO_LIB;GNU_WIN32;HAVE_CONFIG_HWIN32;_WIN32;_WINDOWS;_MBCS;ARCH_X86;USE_XMMINTRIN;BUILD_SSE_OPTIMIZATIONS;ENABLE_NLS=1;CLEARLOOKS_CONF_LOCATION="\\etc\\engines\\libclearlooks.la";PANGO_CONF_LOCATION="\\etc\\pango\\pango.modules";PIXBUFLOADERS_CONF_LOCATION="\\etc\\gtk-2.0\\gdk-pixbuf.loaders";PROGRAM_VERSION="6";PACKAGE="gtk2_ardour";_REENTRANT;_USE_MATH_DEFINES;_LARGEFILE_SOURCE;_LARGEFILE64_SOURCE;LIBC_DISABLE_DEPRECATED;BOOST_SYSTEM_NO_DEPRECATED;__STDC_LIMIT_MACROS;__STDC_FORMAT_MACROS;INTERNAL_SHARED_LIBS=1;JACK_SESSION=1;HAVE_GLIB=1;HAVE_GTHREAD=1;HAVE_SNDFILE=1;HAVE_GIOMM=1;HAVE_CURL=1;HAVE_LO=1;HAVE_MODE_T=1;PHONE_HOME=1;FREESOUND=1;LV2_EXTENDED=1;WINDOWS_KEY="Mod4&gt;&lt;Super";IS_OSX=0;HAVE_XML=1;HAVE_UUID=1;HAVE_LIBS_PBD=1;HAVE_JACK=1;HAVE_LIBS_MIDIPP2=1;HAVE_LIBS_EVORAL=1;HAVE_FFTW3=1;HAVE_FFTW3F=1;HAVE_AUBIO=1;HAVE_LIBS_VAMP_SDK=1;HAVE_LIBS_VAMP_PLUGINS=1;HAVE_LIBS_TAGLIB=1;HAVE_LIBS_LIBLTC=1;HAVE_LIBS_RUBBERBAND=1;HAVE_CONTROL_PROTOCOL=1;HAVE_FRONTIER=1;HAVE_GENERIC_MIDI=1;HAVE_MACKIE=1;HAVE_OSC=1;HAVE_TRANZPORT=1;HAVE_WIIMOTE=1;HAVE_LIBS_SURFACES=1;HAVE_2IN2OUT=1;HAVE_1IN2OUT=1;HAVE_VBAP=1;HAVE_LIBS_PANNERS=1;HAVE_LIBS_TEMPORAL=1;HAVE_LRDF=1;HAVE_SAMPLERATE=1;HAVE_SERD=1;HAVE_SORD=1;HAVE_SRATOM=1;HAVE_LILV=1;HAVE_LILV_0_16_0=1;HAVE_OGG=1;HAVE_FLAC=1;HAVE_RUBBERBAND=1;USE_RUBBERBAND=1;HAVE_JACK_SESSION=1;HAVE_UNISTD=1;HAVE_JACK_ON_INFO_SHUTDOWN=1;HAVE_JACK_VIDEO_SUPPORT=1;HAVE_BOOST_SCOPED_PTR_HPP=1;HAVE_BOOST_PTR_CONTAINER_PTR_LIST_HPP=1;HAVE_LIBS_ARDOUR=1;HAVE_GTKMM=1;HAVE_GTK=1;HAVE_LIBS_GTKMM2EXT=1;HAVE_LIBS_CLEARLOOKS_NEWER=1;HAVE_BOOST_FORMAT_HPP=1;HAVE_LIBS_AUDIOGRAPHER=1;HAVE_GNOMECANVAS=0;HAVE_GNOMECANVASMM=0;HAVE_X11=0;HAVE_FONTCONFIG=1;HAVE_BOOST_SHARED_PTR_HPP=1;HAVE_BOOST_WEAK_PTR_HPP=1;HAVE_GTK2_ARDOUR=1;HAVE_EXPORT=1;HAVE_MIDI_MAPS=1;HAVE_MCP=1;HAVE_PATCHFILES=1;HAVE_TOOLS_SANITY_CHECK=1;SMF_VERSION="1.2";LOCALEDIR="";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <StringPooling>false</StringPooling>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <EnableEnhancedInstructionSet>StreamingSIMDExtensions</EnableEnhancedInstructionSet>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <CompileAs>CompileAsCpp</CompileAs>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>libfftw3-3.lib;libfftw3f-3.lib;libfftw3l-3.lib;libeay32.lib;iconvRDC.lib;zlib1RDC.lib;boost-regex32RDC.lib;$(DllPrefix)atkmm32$(AtkmmDllSuffix)RDC.lib;$(DllPrefix)gtkmm32$(GtkmmDllSuffix)RDC.lib;$(DllPrefix)gdkmm32$(GtkmmDllSuffix)RDC.lib;$(DllPrefix)glibmm32$(GlibmmDllSuffix)RDC.lib;$(DllPrefix)giomm32$(GlibmmDllSuffix)RDC.lib;$(DllPrefix)cairomm32$(CairommDllSuffix)RDC.lib;$(DllPrefix)pangomm32$(PangommDllSuffix)RDC.lib;pthreadVCE2.lib;$(DllPrefix)pango32$(PangoDllSuffix)RDC.lib;$(DllPrefix)pangoft232$(PangoDllSuffix)RDC.lib;$(DllPrefix)pangowin32$(PangoDllSuffix)RDC.lib;$(DllPrefix)pangocairo32$(PangoDllSuffix)RDC.lib;$(DllPrefix)cairo32$(CairoDllSuffix)RDC.lib;$(DllPrefix)atk32$(AtkDllSuffix)RDC.lib;$(DllPrefix)gthread32$(GlibDllSuffix)RDC.lib;$(DllPrefix)gobject32$(GlibDllSuffix)RDC.lib;$(DllPrefix)gmodule32$(GlibDllSuffix)RDC.lib;$(DllPrefix)glib32$(GlibDllSuffix)RDC.lib;$(DllPrefix)gio32$(GlibDllSuffix)RDC.lib;$(DllPrefix)gtk32$(GtkDllSuffix)RDC.lib;$(DllPrefix)gdk32$(GtkDllSuffix)RDC.lib;$(DllPrefix)gdk-pixbuf32$(GdkPixbufDllSuffix)RDC.lib;$(DllPrefix)sigc++32-2.0RDC.lib;$(DllPrefix)curlRDC.lib;$(DllPrefix)fontconfigRDC.lib;freetype32-2RDC.lib;raptor2.lib;lrdf.lib;libloRDC.lib;$(DllPrefix)ardour32RDC.lib;$(DllPrefix)ardour_cp32RDC.lib;$(DllPrefix)audiographer32RDC.lib;$(DllPrefix)lua32RDC.lib;$(DllPrefix)pbd32RDC.lib;$(DllPrefix)midi++32RDC.lib;$(DllPrefix)evoral32RDC.lib;$(DllPrefix)ptformat32-0RDC.lib;$(DllPrefix)gtkmm2ext32RDC.lib;$(DllPrefix)ltcRDC.lib;$(DllPrefix)temporal32RDC.lib;$(DllPrefix)widgets32RDC.lib;waveviewRDC.lib;cairocanvasRDC.lib;rubberbandRDC.lib;$(DllPrefix)sndfile-1.lib;$(DllPrefix)samplerate-0.lib;vampsdkRDC.lib;vamphostsdkRDC.lib;panner_1in2out32RDC.lib;panner_2in2out32RDC.lib;panner_vbap32RDC.lib;$(DllPrefix)lilv32-0RDC.lib;$(DllPrefix)suil32-0RDC.lib;$(DllPrefix)serd32-0RDC.lib;$(DllPrefix)sord32-0RDC.lib;$(DllPrefix)sratom32-0RDC.lib;libart_lgpl_2.lib;libjack.lib;libxml2.lib;intlRDC.lib;shell32.lib;psapi.lib;iphlpapi.lib;ws2_32.lib;winmm.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>$(Release32TestSuiteFolder)\$(ProjectName)RDC.exe</OutputFile>
+      <AdditionalLibraryDirectories>F:\pthread-win32\Pre-built.2\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <IgnoreSpecificDefaultLibraries>libboost_regex-vc80-mt-1_40.lib;dsound.lib;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Console</SubSystem>
+    </Link>
+    <PostBuildEvent>
+      <Command>cd ..\gtk2_ardour
+copy /Y "resources\*.png" "$(Release32TestSuiteFolder)\..\share\$(LibardourFolder)\resources"
+copy /Y "icons\*.png" "$(Release32TestSuiteFolder)\..\share\$(LibardourFolder)\icons"
+copy /Y "icons\cursor_square\*.png" "$(Release32TestSuiteFolder)\..\share\$(LibardourFolder)\icons"
+copy /Y "icons\cursor_square\hotspots" "$(Release32TestSuiteFolder)\..\share\$(LibardourFolder)\icons"
+copy /Y "ardour.keys" "$(Release32TestSuiteFolder)\..\share\$(LibardourFolder)"
+copy /Y "default_ui_config" "$(Release32TestSuiteFolder)\..\share\$(LibardourFolder)"
+</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="..\gtk2_ardour\about.cc" />
+    <ClCompile Include="..\gtk2_ardour\actions.cc" />
+    <ClCompile Include="..\gtk2_ardour\add_route_dialog.cc" />
+    <ClCompile Include="..\gtk2_ardour\add_video_dialog.cc" />
+    <ClCompile Include="..\gtk2_ardour\ambiguous_file_dialog.cc" />
+    <ClCompile Include="..\gtk2_ardour\analysis_window.cc" />
+    <ClCompile Include="..\gtk2_ardour\ardour_dialog.cc" />
+    <ClCompile Include="..\gtk2_ardour\ardour_http.cc" />
+    <ClCompile Include="..\gtk2_ardour\ardour_message.cc" />
+    <ClCompile Include="..\gtk2_ardour\ardour_ui.cc" />
+    <ClCompile Include="..\gtk2_ardour\ardour_ui2.cc" />
+    <ClCompile Include="..\gtk2_ardour\ardour_ui3.cc" />
+    <ClCompile Include="..\gtk2_ardour\ardour_ui_access_web.cc" />
+    <ClCompile Include="..\gtk2_ardour\ardour_ui_dependents.cc" />
+    <ClCompile Include="..\gtk2_ardour\ardour_ui_dialogs.cc" />
+    <ClCompile Include="..\gtk2_ardour\ardour_ui_ed.cc" />
+    <ClCompile Include="..\gtk2_ardour\ardour_ui_engine.cc" />
+    <ClCompile Include="..\gtk2_ardour\ardour_ui_keys.cc" />
+    <ClCompile Include="..\gtk2_ardour\ardour_ui_mixer.cc" />
+    <ClCompile Include="..\gtk2_ardour\ardour_ui_options.cc" />
+    <ClCompile Include="..\gtk2_ardour\ardour_ui_session.cc" />
+    <ClCompile Include="..\gtk2_ardour\ardour_ui_startup.cc" />
+    <ClCompile Include="..\gtk2_ardour\ardour_ui_video.cc" />
+    <ClCompile Include="..\gtk2_ardour\ardour_window.cc" />
+    <ClCompile Include="..\gtk2_ardour\audio_clock.cc" />
+    <ClCompile Include="..\gtk2_ardour\audio_region_editor.cc" />
+    <ClCompile Include="..\gtk2_ardour\audio_region_view.cc" />
+    <ClCompile Include="..\gtk2_ardour\audio_streamview.cc" />
+    <ClCompile Include="..\gtk2_ardour\audio_time_axis.cc" />
+    <ClCompile Include="..\gtk2_ardour\automation_controller.cc" />
+    <ClCompile Include="..\gtk2_ardour\automation_line.cc" />
+    <ClCompile Include="..\gtk2_ardour\automation_region_view.cc" />
+    <ClCompile Include="..\gtk2_ardour\automation_streamview.cc" />
+    <ClCompile Include="..\gtk2_ardour\automation_time_axis.cc" />
+    <ClCompile Include="..\gtk2_ardour\axis_view.cc" />
+    <ClCompile Include="..\gtk2_ardour\big_clock_window.cc" />
+    <ClCompile Include="..\gtk2_ardour\big_transport_window.cc" />
+    <ClCompile Include="..\gtk2_ardour\bundle_env_msvc.cc" />
+    <ClCompile Include="..\gtk2_ardour\bundle_manager.cc" />
+    <ClCompile Include="..\gtk2_ardour\clock_group.cc" />
+    <ClCompile Include="..\gtk2_ardour\color_theme_manager.cc" />
+    <ClCompile Include="..\gtk2_ardour\configinfo.cc" />
+    <ClCompile Include="..\gtk2_ardour\control_point.cc" />
+    <ClCompile Include="..\gtk2_ardour\control_point_dialog.cc" />
+    <ClCompile Include="..\gtk2_ardour\control_slave_ui.cc" />
+    <ClCompile Include="..\gtk2_ardour\cursor_context.cc" />
+    <ClCompile Include="..\gtk2_ardour\curvetest.cc" />
+    <ClCompile Include="..\gtk2_ardour\debug.cc" />
+    <ClCompile Include="..\gtk2_ardour\dsp_stats_ui.cc" />
+    <ClCompile Include="..\gtk2_ardour\dsp_stats_window.cc" />
+    <ClCompile Include="..\gtk2_ardour\duplicate_routes_dialog.cc" />
+    <ClCompile Include="..\gtk2_ardour\editing.cc" />
+    <ClCompile Include="..\gtk2_ardour\editor.cc" />
+    <ClCompile Include="..\gtk2_ardour\editor_actions.cc" />
+    <ClCompile Include="..\gtk2_ardour\editor_audiotrack.cc" />
+    <ClCompile Include="..\gtk2_ardour\editor_audio_import.cc" />
+    <ClCompile Include="..\gtk2_ardour\editor_canvas.cc" />
+    <ClCompile Include="..\gtk2_ardour\editor_canvas_events.cc" />
+    <ClCompile Include="..\gtk2_ardour\editor_component.cc" />
+    <ClCompile Include="..\gtk2_ardour\editor_cursors.cc" />
+    <ClCompile Include="..\gtk2_ardour\editor_drag.cc" />
+    <ClCompile Include="..\gtk2_ardour\editor_export_audio.cc" />
+    <ClCompile Include="..\gtk2_ardour\editor_group_tabs.cc" />
+    <ClCompile Include="..\gtk2_ardour\editor_keys.cc" />
+    <ClCompile Include="..\gtk2_ardour\editor_locations.cc" />
+    <ClCompile Include="..\gtk2_ardour\editor_markers.cc" />
+    <ClCompile Include="..\gtk2_ardour\editor_mixer.cc" />
+    <ClCompile Include="..\gtk2_ardour\editor_mouse.cc" />
+    <ClCompile Include="..\gtk2_ardour\editor_ops.cc" />
+    <ClCompile Include="..\gtk2_ardour\editor_pt_import.cc" />
+    <ClCompile Include="..\gtk2_ardour\editor_regions.cc" />
+    <ClCompile Include="..\gtk2_ardour\editor_routes.cc" />
+    <ClCompile Include="..\gtk2_ardour\editor_route_groups.cc" />
+    <ClCompile Include="..\gtk2_ardour\editor_rulers.cc" />
+    <ClCompile Include="..\gtk2_ardour\editor_selection.cc" />
+    <ClCompile Include="..\gtk2_ardour\editor_snapshots.cc" />
+    <ClCompile Include="..\gtk2_ardour\editor_sources.cc" />
+    <ClCompile Include="..\gtk2_ardour\editor_summary.cc" />
+    <ClCompile Include="..\gtk2_ardour\editor_tempodisplay.cc" />
+    <ClCompile Include="..\gtk2_ardour\editor_timefx.cc" />
+    <ClCompile Include="..\gtk2_ardour\editor_videotimeline.cc" />
+    <ClCompile Include="..\gtk2_ardour\edit_note_dialog.cc" />
+    <ClCompile Include="..\gtk2_ardour\engine_dialog.cc" />
+    <ClCompile Include="..\gtk2_ardour\enums.cc" />
+    <ClCompile Include="..\gtk2_ardour\export_analysis_graphs.cc" />
+    <ClCompile Include="..\gtk2_ardour\export_channel_selector.cc" />
+    <ClCompile Include="..\gtk2_ardour\export_dialog.cc" />
+    <ClCompile Include="..\gtk2_ardour\export_filename_selector.cc" />
+    <ClCompile Include="..\gtk2_ardour\export_file_notebook.cc" />
+    <ClCompile Include="..\gtk2_ardour\export_format_dialog.cc" />
+    <ClCompile Include="..\gtk2_ardour\export_format_selector.cc" />
+    <ClCompile Include="..\gtk2_ardour\export_preset_selector.cc" />
+    <ClCompile Include="..\gtk2_ardour\export_report.cc" />
+    <ClCompile Include="..\gtk2_ardour\export_timespan_selector.cc" />
+    <ClCompile Include="..\gtk2_ardour\export_video_dialog.cc" />
+    <ClCompile Include="..\gtk2_ardour\export_video_infobox.cc" />
+    <ClCompile Include="..\gtk2_ardour\fft.cc" />
+    <ClCompile Include="..\gtk2_ardour\fft_graph.cc" />
+    <ClCompile Include="..\gtk2_ardour\fft_result.cc" />
+    <ClCompile Include="..\gtk2_ardour\floating_text_entry.cc" />
+    <ClCompile Include="..\gtk2_ardour\foldback_strip.cc" />
+    <ClCompile Include="..\gtk2_ardour\gain_meter.cc" />
+    <ClCompile Include="..\gtk2_ardour\generic_pluginui.cc" />
+    <ClCompile Include="..\gtk2_ardour\ghostregion.cc" />
+    <ClCompile Include="..\gtk2_ardour\global_port_matrix.cc" />
+    <ClCompile Include="..\gtk2_ardour\grid_lines.cc" />
+    <ClCompile Include="..\gtk2_ardour\group_tabs.cc" />
+    <ClCompile Include="..\gtk2_ardour\gui_object.cc" />
+    <ClCompile Include="..\gtk2_ardour\hit.cc" />
+    <ClCompile Include="..\gtk2_ardour\idleometer.cc" />
+    <ClCompile Include="..\gtk2_ardour\input_port_monitor.cc" />
+    <ClCompile Include="..\gtk2_ardour\insert_remove_time_dialog.cc" />
+    <ClCompile Include="..\gtk2_ardour\instrument_selector.cc" />
+    <ClCompile Include="..\gtk2_ardour\interthread_progress_window.cc" />
+    <ClCompile Include="..\gtk2_ardour\io_button.cc" />
+    <ClCompile Include="..\gtk2_ardour\io_selector.cc" />
+    <ClCompile Include="..\gtk2_ardour\keyboard.cc" />
+    <ClCompile Include="..\gtk2_ardour\keyeditor.cc" />
+    <ClCompile Include="..\gtk2_ardour\latency_gui.cc" />
+    <ClCompile Include="..\gtk2_ardour\led.cc" />
+    <ClCompile Include="..\gtk2_ardour\level_meter.cc" />
+    <ClCompile Include="..\gtk2_ardour\location_ui.cc" />
+    <ClCompile Include="..\gtk2_ardour\loudness_dialog.cc" />
+    <ClCompile Include="..\gtk2_ardour\loudness_settings.cc" />
+    <ClCompile Include="..\gtk2_ardour\luadialog.cc" />
+    <ClCompile Include="..\gtk2_ardour\luainstance.cc" />
+    <ClCompile Include="..\gtk2_ardour\luawindow.cc" />
+    <ClCompile Include="..\gtk2_ardour\lua_script_manager.cc" />
+    <ClCompile Include="..\gtk2_ardour\lv2_plugin_ui.cc" />
+    <ClCompile Include="..\gtk2_ardour\main.cc" />
+    <ClCompile Include="..\gtk2_ardour\main_clock.cc" />
+    <ClCompile Include="..\gtk2_ardour\marker.cc" />
+    <ClCompile Include="..\gtk2_ardour\meterbridge.cc" />
+    <ClCompile Include="..\gtk2_ardour\meter_patterns.cc" />
+    <ClCompile Include="..\gtk2_ardour\meter_strip.cc" />
+    <ClCompile Include="..\gtk2_ardour\midi_automation_line.cc" />
+    <ClCompile Include="..\gtk2_ardour\midi_channel_dialog.cc" />
+    <ClCompile Include="..\gtk2_ardour\midi_channel_selector.cc" />
+    <ClCompile Include="..\gtk2_ardour\midi_cut_buffer.cc" />
+    <ClCompile Include="..\gtk2_ardour\midi_export_dialog.cc" />
+    <ClCompile Include="..\gtk2_ardour\midi_list_editor.cc" />
+    <ClCompile Include="..\gtk2_ardour\midi_region_view.cc" />
+    <ClCompile Include="..\gtk2_ardour\midi_scroomer.cc" />
+    <ClCompile Include="..\gtk2_ardour\midi_selection.cc" />
+    <ClCompile Include="..\gtk2_ardour\midi_streamview.cc" />
+    <ClCompile Include="..\gtk2_ardour\midi_time_axis.cc" />
+    <ClCompile Include="..\gtk2_ardour\midi_tracer.cc" />
+    <ClCompile Include="..\gtk2_ardour\midi_velocity_dialog.cc" />
+    <ClCompile Include="..\gtk2_ardour\mini_timeline.cc" />
+    <ClCompile Include="..\gtk2_ardour\missing_filesource_dialog.cc" />
+    <ClCompile Include="..\gtk2_ardour\missing_file_dialog.cc" />
+    <ClCompile Include="..\gtk2_ardour\missing_plugin_dialog.cc" />
+    <ClCompile Include="..\gtk2_ardour\mixer_group_tabs.cc" />
+    <ClCompile Include="..\gtk2_ardour\mixer_strip.cc" />
+    <ClCompile Include="..\gtk2_ardour\mixer_ui.cc" />
+    <ClCompile Include="..\gtk2_ardour\monitor_section.cc" />
+    <ClCompile Include="..\gtk2_ardour\monitor_selector.cc" />
+    <ClCompile Include="..\gtk2_ardour\mono_panner.cc" />
+    <ClCompile Include="..\gtk2_ardour\mono_panner_editor.cc" />
+    <ClCompile Include="..\gtk2_ardour\mouse_cursors.cc" />
+    <ClCompile Include="..\gtk2_ardour\msvc\winmain.cc" />
+    <ClCompile Include="..\gtk2_ardour\nag.cc" />
+    <ClCompile Include="..\gtk2_ardour\new_plugin_preset_dialog.cc" />
+    <ClCompile Include="..\gtk2_ardour\new_user_wizard.cc" />
+    <ClCompile Include="..\gtk2_ardour\normalize_dialog.cc" />
+    <ClCompile Include="..\gtk2_ardour\note.cc" />
+    <ClCompile Include="..\gtk2_ardour\note_base.cc" />
+    <ClCompile Include="..\gtk2_ardour\note_player.cc" />
+    <ClCompile Include="..\gtk2_ardour\note_select_dialog.cc" />
+    <ClCompile Include="..\gtk2_ardour\nsm.cc" />
+    <ClCompile Include="..\gtk2_ardour\nsmclient.cc" />
+    <ClCompile Include="..\gtk2_ardour\option_editor.cc" />
+    <ClCompile Include="..\gtk2_ardour\opts.cc" />
+    <ClCompile Include="..\gtk2_ardour\panner2d.cc" />
+    <ClCompile Include="..\gtk2_ardour\panner_editor.cc" />
+    <ClCompile Include="..\gtk2_ardour\panner_interface.cc" />
+    <ClCompile Include="..\gtk2_ardour\panner_ui.cc" />
+    <ClCompile Include="..\gtk2_ardour\patch_change.cc" />
+    <ClCompile Include="..\gtk2_ardour\patch_change_dialog.cc" />
+    <ClCompile Include="..\gtk2_ardour\patch_change_widget.cc" />
+    <ClCompile Include="..\gtk2_ardour\pianokeyboard.cc" />
+    <ClCompile Include="..\gtk2_ardour\piano_key_bindings.cc" />
+    <ClCompile Include="..\gtk2_ardour\piano_roll_header.cc" />
+    <ClCompile Include="..\gtk2_ardour\pingback.cc" />
+    <ClCompile Include="..\gtk2_ardour\playlist_selector.cc" />
+    <ClCompile Include="..\gtk2_ardour\plugin_display.cc" />
+    <ClCompile Include="..\gtk2_ardour\plugin_dspload_ui.cc" />
+    <ClCompile Include="..\gtk2_ardour\plugin_dspload_window.cc" />
+    <ClCompile Include="..\gtk2_ardour\plugin_eq_gui.cc" />
+    <ClCompile Include="..\gtk2_ardour\plugin_manager_ui.cc" />
+    <ClCompile Include="..\gtk2_ardour\plugin_pin_dialog.cc" />
+    <ClCompile Include="..\gtk2_ardour\plugin_presets_ui.cc" />
+    <ClCompile Include="..\gtk2_ardour\plugin_scan_dialog.cc" />
+    <ClCompile Include="..\gtk2_ardour\plugin_selector.cc" />
+    <ClCompile Include="..\gtk2_ardour\plugin_setup_dialog.cc" />
+    <ClCompile Include="..\gtk2_ardour\plugin_ui.cc" />
+    <ClCompile Include="..\gtk2_ardour\port_group.cc" />
+    <ClCompile Include="..\gtk2_ardour\port_insert_ui.cc" />
+    <ClCompile Include="..\gtk2_ardour\port_matrix.cc" />
+    <ClCompile Include="..\gtk2_ardour\port_matrix_body.cc" />
+    <ClCompile Include="..\gtk2_ardour\port_matrix_column_labels.cc" />
+    <ClCompile Include="..\gtk2_ardour\port_matrix_component.cc" />
+    <ClCompile Include="..\gtk2_ardour\port_matrix_grid.cc" />
+    <ClCompile Include="..\gtk2_ardour\port_matrix_labels.cc" />
+    <ClCompile Include="..\gtk2_ardour\port_matrix_row_labels.cc" />
+    <ClCompile Include="..\gtk2_ardour\processor_box.cc" />
+    <ClCompile Include="..\gtk2_ardour\processor_selection.cc" />
+    <ClCompile Include="..\gtk2_ardour\progress_reporter.cc" />
+    <ClCompile Include="..\gtk2_ardour\pt_import_selector.cc" />
+    <ClCompile Include="..\gtk2_ardour\public_editor.cc" />
+    <ClCompile Include="..\gtk2_ardour\quantize_dialog.cc" />
+    <ClCompile Include="..\gtk2_ardour\rc_option_editor.cc" />
+    <ClCompile Include="..\gtk2_ardour\recorder_group_tabs.cc" />
+    <ClCompile Include="..\gtk2_ardour\recorder_ui.cc" />
+    <ClCompile Include="..\gtk2_ardour\rec_info_box.cc" />
+    <ClCompile Include="..\gtk2_ardour\region_editor.cc" />
+    <ClCompile Include="..\gtk2_ardour\region_gain_line.cc" />
+    <ClCompile Include="..\gtk2_ardour\region_layering_order_editor.cc" />
+    <ClCompile Include="..\gtk2_ardour\region_peak_cursor.cc" />
+    <ClCompile Include="..\gtk2_ardour\region_selection.cc" />
+    <ClCompile Include="..\gtk2_ardour\region_view.cc" />
+    <ClCompile Include="..\gtk2_ardour\return_ui.cc" />
+    <ClCompile Include="..\gtk2_ardour\rhythm_ferret.cc" />
+    <ClCompile Include="..\gtk2_ardour\route_group_dialog.cc" />
+    <ClCompile Include="..\gtk2_ardour\route_group_menu.cc" />
+    <ClCompile Include="..\gtk2_ardour\route_params_ui.cc" />
+    <ClCompile Include="..\gtk2_ardour\route_processor_selection.cc" />
+    <ClCompile Include="..\gtk2_ardour\route_time_axis.cc" />
+    <ClCompile Include="..\gtk2_ardour\route_ui.cc" />
+    <ClCompile Include="..\gtk2_ardour\ruler_dialog.cc" />
+    <ClCompile Include="..\gtk2_ardour\save_as_dialog.cc" />
+    <ClCompile Include="..\gtk2_ardour\save_template_dialog.cc" />
+    <ClCompile Include="..\gtk2_ardour\screensaver.cc" />
+    <ClCompile Include="..\gtk2_ardour\script_selector.cc" />
+    <ClCompile Include="..\gtk2_ardour\search_path_option.cc" />
+    <ClCompile Include="..\gtk2_ardour\selection.cc" />
+    <ClCompile Include="..\gtk2_ardour\selection_memento.cc" />
+    <ClCompile Include="..\gtk2_ardour\send_ui.cc" />
+    <ClCompile Include="..\gtk2_ardour\session_archive_dialog.cc" />
+    <ClCompile Include="..\gtk2_ardour\session_dialog.cc" />
+    <ClCompile Include="..\gtk2_ardour\session_import_dialog.cc" />
+    <ClCompile Include="..\gtk2_ardour\session_metadata_dialog.cc" />
+    <ClCompile Include="..\gtk2_ardour\session_option_editor.cc" />
+    <ClCompile Include="..\gtk2_ardour\sfdb_freesound_mootcher.cc" />
+    <ClCompile Include="..\gtk2_ardour\sfdb_ui.cc" />
+    <ClCompile Include="..\gtk2_ardour\shuttle_control.cc" />
+    <ClCompile Include="..\gtk2_ardour\soundcloud_export_selector.cc" />
+    <ClCompile Include="..\gtk2_ardour\speaker_dialog.cc" />
+    <ClCompile Include="..\gtk2_ardour\splash.cc" />
+    <ClCompile Include="..\gtk2_ardour\startup_fsm.cc" />
+    <ClCompile Include="..\gtk2_ardour\step_editor.cc" />
+    <ClCompile Include="..\gtk2_ardour\step_entry.cc" />
+    <ClCompile Include="..\gtk2_ardour\stereo_panner.cc" />
+    <ClCompile Include="..\gtk2_ardour\stereo_panner_editor.cc" />
+    <ClCompile Include="..\gtk2_ardour\streamview.cc" />
+    <ClCompile Include="..\gtk2_ardour\stripable_colorpicker.cc" />
+    <ClCompile Include="..\gtk2_ardour\stripable_time_axis.cc" />
+    <ClCompile Include="..\gtk2_ardour\strip_silence_dialog.cc" />
+    <ClCompile Include="..\gtk2_ardour\sys_ex.cc" />
+    <ClCompile Include="..\gtk2_ardour\template_dialog.cc" />
+    <ClCompile Include="..\gtk2_ardour\tempo_curve.cc" />
+    <ClCompile Include="..\gtk2_ardour\tempo_dialog.cc" />
+    <ClCompile Include="..\gtk2_ardour\tempo_lines.cc" />
+    <ClCompile Include="..\gtk2_ardour\timers.cc" />
+    <ClCompile Include="..\gtk2_ardour\time_axis_view.cc" />
+    <ClCompile Include="..\gtk2_ardour\time_axis_view_item.cc" />
+    <ClCompile Include="..\gtk2_ardour\time_fx_dialog.cc" />
+    <ClCompile Include="..\gtk2_ardour\time_info_box.cc" />
+    <ClCompile Include="..\gtk2_ardour\time_selection.cc" />
+    <ClCompile Include="..\gtk2_ardour\track_record_axis.cc" />
+    <ClCompile Include="..\gtk2_ardour\track_selection.cc" />
+    <ClCompile Include="..\gtk2_ardour\track_view_list.cc" />
+    <ClCompile Include="..\gtk2_ardour\transcode_ffmpeg.cc" />
+    <ClCompile Include="..\gtk2_ardour\transcode_video_dialog.cc" />
+    <ClCompile Include="..\gtk2_ardour\transform_dialog.cc" />
+    <ClCompile Include="..\gtk2_ardour\transport_control.cc" />
+    <ClCompile Include="..\gtk2_ardour\transport_control_ui.cc" />
+    <ClCompile Include="..\gtk2_ardour\transport_masters_dialog.cc" />
+    <ClCompile Include="..\gtk2_ardour\transpose_dialog.cc" />
+    <ClCompile Include="..\gtk2_ardour\ui_config.cc" />
+    <ClCompile Include="..\gtk2_ardour\utils.cc" />
+    <ClCompile Include="..\gtk2_ardour\utils_videotl.cc" />
+    <ClCompile Include="..\gtk2_ardour\varispeed_dialog.cc" />
+    <ClCompile Include="..\gtk2_ardour\vca_master_strip.cc" />
+    <ClCompile Include="..\gtk2_ardour\vca_time_axis.cc" />
+    <ClCompile Include="..\gtk2_ardour\verbose_cursor.cc" />
+    <ClCompile Include="..\gtk2_ardour\version.cc" />
+    <ClCompile Include="..\gtk2_ardour\video_image_frame.cc" />
+    <ClCompile Include="..\gtk2_ardour\video_monitor.cc" />
+    <ClCompile Include="..\gtk2_ardour\video_server_dialog.cc" />
+    <ClCompile Include="..\gtk2_ardour\video_timeline.cc" />
+    <ClCompile Include="..\gtk2_ardour\virtual_keyboard_window.cc" />
+    <ClCompile Include="..\gtk2_ardour\visibility_group.cc" />
+    <ClCompile Include="..\gtk2_ardour\vst3_hwnd_plugin_ui.cc" />
+    <ClCompile Include="..\gtk2_ardour\vst3_plugin_ui.cc" />
+    <ClCompile Include="..\gtk2_ardour\vst_plugin_ui.cc" />
+    <ClCompile Include="..\gtk2_ardour\windows_vst_plugin_ui.cc" />
+    <ClCompile Include="..\gtk2_ardour\window_manager.cc" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\gtk2_ardour\about.h" />
+    <ClInclude Include="..\gtk2_ardour\actions.h" />
+    <ClInclude Include="..\gtk2_ardour\add_route_dialog.h" />
+    <ClInclude Include="..\gtk2_ardour\add_video_dialog.h" />
+    <ClInclude Include="..\gtk2_ardour\ambiguous_file_dialog.h" />
+    <ClInclude Include="..\gtk2_ardour\analysis_window.h" />
+    <ClInclude Include="..\gtk2_ardour\ardour_dialog.h" />
+    <ClInclude Include="..\gtk2_ardour\ardour_http.h" />
+    <ClInclude Include="..\gtk2_ardour\ardour_message.h" />
+    <ClInclude Include="..\gtk2_ardour\ardour_ui.h" />
+    <ClInclude Include="..\gtk2_ardour\ardour_window.h" />
+    <ClInclude Include="..\gtk2_ardour\audio_clock.h" />
+    <ClInclude Include="..\gtk2_ardour\audio_region_editor.h" />
+    <ClInclude Include="..\gtk2_ardour\audio_region_view.h" />
+    <ClInclude Include="..\gtk2_ardour\audio_streamview.h" />
+    <ClInclude Include="..\gtk2_ardour\audio_time_axis.h" />
+    <ClInclude Include="..\gtk2_ardour\automation_controller.h" />
+    <ClInclude Include="..\gtk2_ardour\automation_line.h" />
+    <ClInclude Include="..\gtk2_ardour\automation_region_view.h" />
+    <ClInclude Include="..\gtk2_ardour\automation_selection.h" />
+    <ClInclude Include="..\gtk2_ardour\automation_streamview.h" />
+    <ClInclude Include="..\gtk2_ardour\automation_time_axis.h" />
+    <ClInclude Include="..\gtk2_ardour\au_pluginui.h" />
+    <ClInclude Include="..\gtk2_ardour\axis_provider.h" />
+    <ClInclude Include="..\gtk2_ardour\axis_view.h" />
+    <ClInclude Include="..\gtk2_ardour\big_clock_window.h" />
+    <ClInclude Include="..\gtk2_ardour\big_transport_window.h" />
+    <ClInclude Include="..\gtk2_ardour\bundle_env.h" />
+    <ClInclude Include="..\gtk2_ardour\bundle_manager.h" />
+    <ClInclude Include="..\gtk2_ardour\canvas-waveview.h" />
+    <ClInclude Include="..\gtk2_ardour\canvas_vars.h" />
+    <ClInclude Include="..\gtk2_ardour\clock_group.h" />
+    <ClInclude Include="..\gtk2_ardour\color_aliases.h" />
+    <ClInclude Include="..\gtk2_ardour\color_theme_manager.h" />
+    <ClInclude Include="..\gtk2_ardour\configinfo.h" />
+    <ClInclude Include="..\gtk2_ardour\context_menu_helper.h" />
+    <ClInclude Include="..\gtk2_ardour\control_point.h" />
+    <ClInclude Include="..\gtk2_ardour\control_point_dialog.h" />
+    <ClInclude Include="..\gtk2_ardour\control_slave_ui.h" />
+    <ClInclude Include="..\gtk2_ardour\crossfade_edit.h" />
+    <ClInclude Include="..\gtk2_ardour\crossfade_view.h" />
+    <ClInclude Include="..\gtk2_ardour\cursor_context.h" />
+    <ClInclude Include="..\gtk2_ardour\debug.h" />
+    <ClInclude Include="..\gtk2_ardour\dsp_stats_ui.h" />
+    <ClInclude Include="..\gtk2_ardour\dsp_stats_window.h" />
+    <ClInclude Include="..\gtk2_ardour\duplicate_routes_dialog.h" />
+    <ClInclude Include="..\gtk2_ardour\editing.h" />
+    <ClInclude Include="..\gtk2_ardour\editing_convert.h" />
+    <ClInclude Include="..\gtk2_ardour\editing_syms.h" />
+    <ClInclude Include="..\gtk2_ardour\editor.h" />
+    <ClInclude Include="..\gtk2_ardour\editor_component.h" />
+    <ClInclude Include="..\gtk2_ardour\editor_cursors.h" />
+    <ClInclude Include="..\gtk2_ardour\editor_drag.h" />
+    <ClInclude Include="..\gtk2_ardour\editor_group_tabs.h" />
+    <ClInclude Include="..\gtk2_ardour\editor_items.h" />
+    <ClInclude Include="..\gtk2_ardour\editor_locations.h" />
+    <ClInclude Include="..\gtk2_ardour\editor_regions.h" />
+    <ClInclude Include="..\gtk2_ardour\editor_routes.h" />
+    <ClInclude Include="..\gtk2_ardour\editor_route_groups.h" />
+    <ClInclude Include="..\gtk2_ardour\editor_snapshots.h" />
+    <ClInclude Include="..\gtk2_ardour\editor_sources.h" />
+    <ClInclude Include="..\gtk2_ardour\editor_summary.h" />
+    <ClInclude Include="..\gtk2_ardour\edit_note_dialog.h" />
+    <ClInclude Include="..\gtk2_ardour\engine_dialog.h" />
+    <ClInclude Include="..\gtk2_ardour\enums.h" />
+    <ClInclude Include="..\gtk2_ardour\enums_convert.h" />
+    <ClInclude Include="..\gtk2_ardour\export_analysis_graphs.h" />
+    <ClInclude Include="..\gtk2_ardour\export_channel_selector.h" />
+    <ClInclude Include="..\gtk2_ardour\export_dialog.h" />
+    <ClInclude Include="..\gtk2_ardour\export_filename_selector.h" />
+    <ClInclude Include="..\gtk2_ardour\export_file_notebook.h" />
+    <ClInclude Include="..\gtk2_ardour\export_format_dialog.h" />
+    <ClInclude Include="..\gtk2_ardour\export_format_selector.h" />
+    <ClInclude Include="..\gtk2_ardour\export_preset_selector.h" />
+    <ClInclude Include="..\gtk2_ardour\export_range_markers_dialog.h" />
+    <ClInclude Include="..\gtk2_ardour\export_report.h" />
+    <ClInclude Include="..\gtk2_ardour\export_timespan_selector.h" />
+    <ClInclude Include="..\gtk2_ardour\export_video_dialog.h" />
+    <ClInclude Include="..\gtk2_ardour\export_video_infobox.h" />
+    <ClInclude Include="..\gtk2_ardour\fft.h" />
+    <ClInclude Include="..\gtk2_ardour\fft_graph.h" />
+    <ClInclude Include="..\gtk2_ardour\fft_result.h" />
+    <ClInclude Include="..\gtk2_ardour\fix_carbon.h" />
+    <ClInclude Include="..\gtk2_ardour\floating_text_entry.h" />
+    <ClInclude Include="..\gtk2_ardour\foldback_strip.h" />
+    <ClInclude Include="..\gtk2_ardour\gain_meter.h" />
+    <ClInclude Include="..\gtk2_ardour\gettext.h" />
+    <ClInclude Include="..\gtk2_ardour\ghostregion.h" />
+    <ClInclude Include="..\gtk2_ardour\global_port_matrix.h" />
+    <ClInclude Include="..\gtk2_ardour\grid_lines.h" />
+    <ClInclude Include="..\gtk2_ardour\group_tabs.h" />
+    <ClInclude Include="..\gtk2_ardour\gui_object.h" />
+    <ClInclude Include="..\gtk2_ardour\gui_thread.h" />
+    <ClInclude Include="..\gtk2_ardour\hit.h" />
+    <ClInclude Include="..\gtk2_ardour\idleometer.h" />
+    <ClInclude Include="..\gtk2_ardour\input_port_monitor.h" />
+    <ClInclude Include="..\gtk2_ardour\insert_remove_time_dialog.h" />
+    <ClInclude Include="..\gtk2_ardour\instrument_selector.h" />
+    <ClInclude Include="..\gtk2_ardour\interthread_progress_window.h" />
+    <ClInclude Include="..\gtk2_ardour\io_button.h" />
+    <ClInclude Include="..\gtk2_ardour\io_selector.h" />
+    <ClInclude Include="..\gtk2_ardour\item_counts.h" />
+    <ClInclude Include="..\gtk2_ardour\keyboard.h" />
+    <ClInclude Include="..\gtk2_ardour\keyeditor.h" />
+    <ClInclude Include="..\gtk2_ardour\latency_gui.h" />
+    <ClInclude Include="..\gtk2_ardour\led.h" />
+    <ClInclude Include="..\gtk2_ardour\level_meter.h" />
+    <ClInclude Include="..\gtk2_ardour\location_ui.h" />
+    <ClInclude Include="..\gtk2_ardour\loudness_dialog.h" />
+    <ClInclude Include="..\gtk2_ardour\loudness_settings.h" />
+    <ClInclude Include="..\gtk2_ardour\luadialog.h" />
+    <ClInclude Include="..\gtk2_ardour\luainstance.h" />
+    <ClInclude Include="..\gtk2_ardour\luasignal.h" />
+    <ClInclude Include="..\gtk2_ardour\luasignal_syms.h" />
+    <ClInclude Include="..\gtk2_ardour\luawindow.h" />
+    <ClInclude Include="..\gtk2_ardour\lua_script_manager.h" />
+    <ClInclude Include="..\gtk2_ardour\lv2_external_ui.h" />
+    <ClInclude Include="..\gtk2_ardour\lv2_plugin_ui.h" />
+    <ClInclude Include="..\gtk2_ardour\main_clock.h" />
+    <ClInclude Include="..\gtk2_ardour\marker.h" />
+    <ClInclude Include="..\gtk2_ardour\marker_selection.h" />
+    <ClInclude Include="..\gtk2_ardour\meterbridge.h" />
+    <ClInclude Include="..\gtk2_ardour\meter_patterns.h" />
+    <ClInclude Include="..\gtk2_ardour\meter_strip.h" />
+    <ClInclude Include="..\gtk2_ardour\midi_automation_line.h" />
+    <ClInclude Include="..\gtk2_ardour\midi_channel_dialog.h" />
+    <ClInclude Include="..\gtk2_ardour\midi_channel_selector.h" />
+    <ClInclude Include="..\gtk2_ardour\midi_cut_buffer.h" />
+    <ClInclude Include="..\gtk2_ardour\midi_export_dialog.h" />
+    <ClInclude Include="..\gtk2_ardour\midi_list_editor.h" />
+    <ClInclude Include="..\gtk2_ardour\midi_region_view.h" />
+    <ClInclude Include="..\gtk2_ardour\midi_scroomer.h" />
+    <ClInclude Include="..\gtk2_ardour\midi_selection.h" />
+    <ClInclude Include="..\gtk2_ardour\midi_streamview.h" />
+    <ClInclude Include="..\gtk2_ardour\midi_time_axis.h" />
+    <ClInclude Include="..\gtk2_ardour\midi_tracer.h" />
+    <ClInclude Include="..\gtk2_ardour\midi_util.h" />
+    <ClInclude Include="..\gtk2_ardour\midi_velocity_dialog.h" />
+    <ClInclude Include="..\gtk2_ardour\mini_timeline.h" />
+    <ClInclude Include="..\gtk2_ardour\missing_filesource_dialog.h" />
+    <ClInclude Include="..\gtk2_ardour\missing_file_dialog.h" />
+    <ClInclude Include="..\gtk2_ardour\missing_plugin_dialog.h" />
+    <ClInclude Include="..\gtk2_ardour\mixer_group_tabs.h" />
+    <ClInclude Include="..\gtk2_ardour\mixer_strip.h" />
+    <ClInclude Include="..\gtk2_ardour\mixer_ui.h" />
+    <ClInclude Include="..\gtk2_ardour\monitor_section.h" />
+    <ClInclude Include="..\gtk2_ardour\monitor_selector.h" />
+    <ClInclude Include="..\gtk2_ardour\mono_panner.h" />
+    <ClInclude Include="..\gtk2_ardour\mono_panner_editor.h" />
+    <ClInclude Include="..\gtk2_ardour\mouse_cursors.h" />
+    <ClInclude Include="..\gtk2_ardour\nag.h" />
+    <ClInclude Include="..\gtk2_ardour\new_plugin_preset_dialog.h" />
+    <ClInclude Include="..\gtk2_ardour\new_user_wizard.h" />
+    <ClInclude Include="..\gtk2_ardour\normalize_dialog.h" />
+    <ClInclude Include="..\gtk2_ardour\note.h" />
+    <ClInclude Include="..\gtk2_ardour\note_base.h" />
+    <ClInclude Include="..\gtk2_ardour\note_player.h" />
+    <ClInclude Include="..\gtk2_ardour\note_select_dialog.h" />
+    <ClInclude Include="..\gtk2_ardour\nsm.h" />
+    <ClInclude Include="..\gtk2_ardour\nsmclient.h" />
+    <ClInclude Include="..\gtk2_ardour\option_editor.h" />
+    <ClInclude Include="..\gtk2_ardour\opts.h" />
+    <ClInclude Include="..\gtk2_ardour\panner2d.h" />
+    <ClInclude Include="..\gtk2_ardour\panner_editor.h" />
+    <ClInclude Include="..\gtk2_ardour\panner_interface.h" />
+    <ClInclude Include="..\gtk2_ardour\panner_ui.h" />
+    <ClInclude Include="..\gtk2_ardour\paste_context.h" />
+    <ClInclude Include="..\gtk2_ardour\patch_change.h" />
+    <ClInclude Include="..\gtk2_ardour\patch_change_dialog.h" />
+    <ClInclude Include="..\gtk2_ardour\patch_change_widget.h" />
+    <ClInclude Include="..\gtk2_ardour\pianokeyboard.h" />
+    <ClInclude Include="..\gtk2_ardour\piano_key_bindings.h" />
+    <ClInclude Include="..\gtk2_ardour\piano_roll_header.h" />
+    <ClInclude Include="..\gtk2_ardour\pingback.h" />
+    <ClInclude Include="..\gtk2_ardour\playlist_selection.h" />
+    <ClInclude Include="..\gtk2_ardour\playlist_selector.h" />
+    <ClInclude Include="..\gtk2_ardour\plugin_display.h" />
+    <ClInclude Include="..\gtk2_ardour\plugin_dspload_ui.h" />
+    <ClInclude Include="..\gtk2_ardour\plugin_dspload_window.h" />
+    <ClInclude Include="..\gtk2_ardour\plugin_eq_gui.h" />
+    <ClInclude Include="..\gtk2_ardour\plugin_interest.h" />
+    <ClInclude Include="..\gtk2_ardour\plugin_manager_ui.h" />
+    <ClInclude Include="..\gtk2_ardour\plugin_pin_dialog.h" />
+    <ClInclude Include="..\gtk2_ardour\plugin_presets_ui.h" />
+    <ClInclude Include="..\gtk2_ardour\plugin_scan_dialog.h" />
+    <ClInclude Include="..\gtk2_ardour\plugin_selector.h" />
+    <ClInclude Include="..\gtk2_ardour\plugin_setup_dialog.h" />
+    <ClInclude Include="..\gtk2_ardour\plugin_ui.h" />
+    <ClInclude Include="..\gtk2_ardour\plugin_utils.h" />
+    <ClInclude Include="..\gtk2_ardour\point_selection.h" />
+    <ClInclude Include="..\gtk2_ardour\port_group.h" />
+    <ClInclude Include="..\gtk2_ardour\port_insert_ui.h" />
+    <ClInclude Include="..\gtk2_ardour\port_matrix.h" />
+    <ClInclude Include="..\gtk2_ardour\port_matrix_body.h" />
+    <ClInclude Include="..\gtk2_ardour\port_matrix_column_labels.h" />
+    <ClInclude Include="..\gtk2_ardour\port_matrix_component.h" />
+    <ClInclude Include="..\gtk2_ardour\port_matrix_grid.h" />
+    <ClInclude Include="..\gtk2_ardour\port_matrix_labels.h" />
+    <ClInclude Include="..\gtk2_ardour\port_matrix_row_labels.h" />
+    <ClInclude Include="..\gtk2_ardour\port_matrix_types.h" />
+    <ClInclude Include="..\gtk2_ardour\processor_box.h" />
+    <ClInclude Include="..\gtk2_ardour\processor_selection.h" />
+    <ClInclude Include="..\gtk2_ardour\progress_reporter.h" />
+    <ClInclude Include="..\gtk2_ardour\pt_import_selector.h" />
+    <ClInclude Include="..\gtk2_ardour\public_editor.h" />
+    <ClInclude Include="..\gtk2_ardour\quantize_dialog.h" />
+    <ClInclude Include="..\gtk2_ardour\rc_option_editor.h" />
+    <ClInclude Include="..\gtk2_ardour\recorder_group_tabs.h" />
+    <ClInclude Include="..\gtk2_ardour\recorder_ui.h" />
+    <ClInclude Include="..\gtk2_ardour\rec_info_box.h" />
+    <ClInclude Include="..\gtk2_ardour\region_editor.h" />
+    <ClInclude Include="..\gtk2_ardour\region_gain_line.h" />
+    <ClInclude Include="..\gtk2_ardour\region_layering_order_editor.h" />
+    <ClInclude Include="..\gtk2_ardour\region_peak_cursor.h" />
+    <ClInclude Include="..\gtk2_ardour\region_selection.h" />
+    <ClInclude Include="..\gtk2_ardour\region_view.h" />
+    <ClInclude Include="..\gtk2_ardour\return_ui.h" />
+    <ClInclude Include="..\gtk2_ardour\rgb_macros.h" />
+    <ClInclude Include="..\gtk2_ardour\rhythm_ferret.h" />
+    <ClInclude Include="..\gtk2_ardour\route_dialogs.h" />
+    <ClInclude Include="..\gtk2_ardour\route_group_dialog.h" />
+    <ClInclude Include="..\gtk2_ardour\route_group_menu.h" />
+    <ClInclude Include="..\gtk2_ardour\route_params_ui.h" />
+    <ClInclude Include="..\gtk2_ardour\route_processor_selection.h" />
+    <ClInclude Include="..\gtk2_ardour\route_sorter.h" />
+    <ClInclude Include="..\gtk2_ardour\route_time_axis.h" />
+    <ClInclude Include="..\gtk2_ardour\route_ui.h" />
+    <ClInclude Include="..\gtk2_ardour\route_ui_selection.h" />
+    <ClInclude Include="..\gtk2_ardour\ruler_dialog.h" />
+    <ClInclude Include="..\gtk2_ardour\save_as_dialog.h" />
+    <ClInclude Include="..\gtk2_ardour\save_template_dialog.h" />
+    <ClInclude Include="..\gtk2_ardour\script_selector.h" />
+    <ClInclude Include="..\gtk2_ardour\search_path_option.h" />
+    <ClInclude Include="..\gtk2_ardour\selectable.h" />
+    <ClInclude Include="..\gtk2_ardour\selection.h" />
+    <ClInclude Include="..\gtk2_ardour\selection_memento.h" />
+    <ClInclude Include="..\gtk2_ardour\selection_templates.h" />
+    <ClInclude Include="..\gtk2_ardour\send_ui.h" />
+    <ClInclude Include="..\gtk2_ardour\session_archive_dialog.h" />
+    <ClInclude Include="..\gtk2_ardour\session_dialog.h" />
+    <ClInclude Include="..\gtk2_ardour\session_import_dialog.h" />
+    <ClInclude Include="..\gtk2_ardour\session_metadata_dialog.h" />
+    <ClInclude Include="..\gtk2_ardour\session_option_editor.h" />
+    <ClInclude Include="..\gtk2_ardour\sfdb_freesound_mootcher.h" />
+    <ClInclude Include="..\gtk2_ardour\sfdb_ui.h" />
+    <ClInclude Include="..\gtk2_ardour\shuttle_control.h" />
+    <ClInclude Include="..\gtk2_ardour\simple_progress_dialog.h" />
+    <ClInclude Include="..\gtk2_ardour\soundcloud_export_selector.h" />
+    <ClInclude Include="..\gtk2_ardour\speaker_dialog.h" />
+    <ClInclude Include="..\gtk2_ardour\splash.h" />
+    <ClInclude Include="..\gtk2_ardour\startup_fsm.h" />
+    <ClInclude Include="..\gtk2_ardour\step_editor.h" />
+    <ClInclude Include="..\gtk2_ardour\step_entry.h" />
+    <ClInclude Include="..\gtk2_ardour\stereo_panner.h" />
+    <ClInclude Include="..\gtk2_ardour\stereo_panner_editor.h" />
+    <ClInclude Include="..\gtk2_ardour\streamview.h" />
+    <ClInclude Include="..\gtk2_ardour\stripable_colorpicker.h" />
+    <ClInclude Include="..\gtk2_ardour\stripable_time_axis.h" />
+    <ClInclude Include="..\gtk2_ardour\strip_selection.h" />
+    <ClInclude Include="..\gtk2_ardour\strip_silence_dialog.h" />
+    <ClInclude Include="..\gtk2_ardour\sys_ex.h" />
+    <ClInclude Include="..\gtk2_ardour\template_dialog.h" />
+    <ClInclude Include="..\gtk2_ardour\tempo_curve.h" />
+    <ClInclude Include="..\gtk2_ardour\tempo_dialog.h" />
+    <ClInclude Include="..\gtk2_ardour\tempo_lines.h" />
+    <ClInclude Include="..\gtk2_ardour\timers.h" />
+    <ClInclude Include="..\gtk2_ardour\time_axis_view.h" />
+    <ClInclude Include="..\gtk2_ardour\time_axis_view_item.h" />
+    <ClInclude Include="..\gtk2_ardour\time_fx_dialog.h" />
+    <ClInclude Include="..\gtk2_ardour\time_info_box.h" />
+    <ClInclude Include="..\gtk2_ardour\time_selection.h" />
+    <ClInclude Include="..\gtk2_ardour\track_record_axis.h" />
+    <ClInclude Include="..\gtk2_ardour\track_selection.h" />
+    <ClInclude Include="..\gtk2_ardour\track_view_list.h" />
+    <ClInclude Include="..\gtk2_ardour\transcode_ffmpeg.h" />
+    <ClInclude Include="..\gtk2_ardour\transcode_video_dialog.h" />
+    <ClInclude Include="..\gtk2_ardour\transform_dialog.h" />
+    <ClInclude Include="..\gtk2_ardour\transport_control.h" />
+    <ClInclude Include="..\gtk2_ardour\transport_control_ui.h" />
+    <ClInclude Include="..\gtk2_ardour\transport_masters_dialog.h" />
+    <ClInclude Include="..\gtk2_ardour\transpose_dialog.h" />
+    <ClInclude Include="..\gtk2_ardour\ui_config.h" />
+    <ClInclude Include="..\gtk2_ardour\ui_config_vars.h" />
+    <ClInclude Include="..\gtk2_ardour\utils.h" />
+    <ClInclude Include="..\gtk2_ardour\utils_videotl.h" />
+    <ClInclude Include="..\gtk2_ardour\varispeed_dialog.h" />
+    <ClInclude Include="..\gtk2_ardour\vca_master_strip.h" />
+    <ClInclude Include="..\gtk2_ardour\vca_time_axis.h" />
+    <ClInclude Include="..\gtk2_ardour\verbose_cursor.h" />
+    <ClInclude Include="..\gtk2_ardour\version.h" />
+    <ClInclude Include="..\gtk2_ardour\video_image_frame.h" />
+    <ClInclude Include="..\gtk2_ardour\video_monitor.h" />
+    <ClInclude Include="..\gtk2_ardour\video_server_dialog.h" />
+    <ClInclude Include="..\gtk2_ardour\video_timeline.h" />
+    <ClInclude Include="..\gtk2_ardour\video_tool_paths.h" />
+    <ClInclude Include="..\gtk2_ardour\virtual_keyboard_window.h" />
+    <ClInclude Include="..\gtk2_ardour\visibility_group.h" />
+    <ClInclude Include="..\gtk2_ardour\vst3_hwnd_plugin_ui.h" />
+    <ClInclude Include="..\gtk2_ardour\vst3_plugin_ui.h" />
+    <ClInclude Include="..\gtk2_ardour\vst_plugin_ui.h" />
+    <ClInclude Include="..\gtk2_ardour\windows_vst_plugin_ui.h" />
+    <ClInclude Include="..\gtk2_ardour\window_manager.h" />
+    <ClInclude Include="..\libs\ardour\ardour\ardour.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="..\gtk2_ardour\icons\ardour.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="..\gtk2_ardour\win32\msvc_resources.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="resource" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

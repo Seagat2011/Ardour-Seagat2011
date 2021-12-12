@@ -109,7 +109,7 @@ compiler_flags_dictionaries= {
         'fpmath-sse' : '',
         'xmmintrinsics' : '',
         'pipe' : '',
-        'full-optimization' : '/O2',
+        'full-optimization' : ['/O2','/arch x64', 'cgthreads8', 'F8388608', '/favor:INTEL64', '/GL', '/LTG', '/MP8', '/maxcpucount8'],
         'no-frame-pointer' : '',
         'fast-math' : '',
         'strength-reduce' : '',
@@ -1250,7 +1250,7 @@ int main () { return 0; }
     #
     # This won't apply to MSVC but that hasn't been added as a target yet
     #
-    # We can't do this till all tests are complete, since some fail if this is et.
+    # We can't do this till all tests are complete, since some fail if this is set.
     if opts.exports_hidden:
         conf.define ('EXPORT_VISIBILITY_HIDDEN', True)
         if opts.internal_shared_libs:
